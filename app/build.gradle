@@ -8,6 +8,9 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+
+    // ✅ Add SonarQube plugin
+    id 'org.sonarqube' version '4.4.1.3373'
 }
 
 repositories {
@@ -30,5 +33,12 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
+}
+sonarqube {
+    properties {
+        property "sonar.projectKey", "java_app"
+        property "sonar.host.url", "http://3.109.1.1:9000/"  // Replace with your SonarQube server URL
+        property "sonar.login", "squ_8912869b0ef7188a03cf0ffb5c40da4433e1ff7c"  // Replace with your generated token
+    }
 }
 
